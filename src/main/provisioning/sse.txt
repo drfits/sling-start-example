@@ -1,0 +1,17 @@
+[feature name=sse]
+[variables]
+    soc.version=1.0.0-SNAPSHOT
+
+[artifacts]
+    org.apache.sling/org.apache.sling.starter/10-SNAPSHOT/slingstart
+
+[artifacts runModes=:remove]
+    org.apache.sling/org.apache.sling.sample.slingshot/0.8.0
+
+[:repoinit]
+    # Init core service users and theirs ACLs
+    create service user pages-service-user
+
+    set ACL on /content
+        allow jcr:read for pages-service-user
+    end
